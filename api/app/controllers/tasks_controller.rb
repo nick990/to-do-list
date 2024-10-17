@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:destroy, :complete]
+  before_action :set_task, only: %i[destroy complete show]
   def index
     render json: {tasks: Task.all}, status: :ok
+  end
+
+  def show
+    render json: {task: @task}, status: :ok
   end
 
   def create
